@@ -97,13 +97,18 @@ public class Wydarzenie {
     //Dodaj metodę zarezerwujMiejsce(), która zmniejsza liczbę dostępnych miejsc o 1
 
     public String toString() {
-        return nazwa;
+        return "Wydarzenie: " + nazwa +
+                ", data: " + data +
+                ", miejsce: " + miejsce +
+                ", cena: " + cena + " zł" +
+                ", dostępne miejsca: " + dostępneMiejsca + "/" + maxLiczbaMiejsc;
     }
 
     public void zarezerwujMiejsce() {
         if(dostępneMiejsca > 0){
-            dostępneMiejsca = dostępneMiejsca - 1;
+            dostępneMiejsca--;
+        } else {
+            System.out.println("Brak dostępnych miejsc na to wydarzenie.");
         }
-        this.dostępneMiejsca = dostępneMiejsca;
     }
 }

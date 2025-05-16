@@ -35,8 +35,8 @@ public class SystemRezerwacji {
     public Wydarzenie znajdźWydarzenie(String nazwa) {
         for(int i=0; i<listaWydarzeń.size(); i++) {
             Wydarzenie w = listaWydarzeń.get(i);
-            if (w.equals(nazwa)) {
-                System.out.println("Wydarzenie " + nazwa + " jest na liście wydarzeń.");
+            if (w.getNazwa().equals(nazwa)) {
+                return w;
             }
         }
         return null;
@@ -44,15 +44,20 @@ public class SystemRezerwacji {
 
     public Klient znajdzKlienta(String nazwisko) {
         for(int i=0; i<listaKlientów.size(); i++) {
-            Klient w = listaKlientów.get(i);
-            if(w.equals(nazwisko)) {
-                System.out.println("Nazwisko " + nazwisko + " jest na liście klientów.");
+            Klient k = listaKlientów.get(i);
+            if(k.getNazwisko().equals(nazwisko)) {
+                return k;
             }
         }
         return null;
     }
 
     public void zmiezCeneWydarzenia(String nazwa, double nowaCena) {
-
+        Wydarzenie w = znajdźWydarzenie(nazwa);
+        if (w != null) {
+            w.setCena(nowaCena);
+        } else {
+            System.out.println("Nie znaleziono wydarzenia o nazwie: " + nazwa);
+        }
     }
 }
